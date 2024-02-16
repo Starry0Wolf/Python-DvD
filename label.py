@@ -33,7 +33,7 @@ root.geometry("300x300+50+50")
     # Right is x=1648
 
 # Create Label in our window
-image = PhotoImage(file="logo.png")
+image = PhotoImage(file="PythonDvD/logo.png")
 image2 = image.subsample(3,3)
 img = Label(root, image=image2)
 img.pack()

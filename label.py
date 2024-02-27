@@ -63,17 +63,18 @@ EquY = "+="
 global event4
 direction_changed = False
 
-def configure_handler(event4):
-    global EquX
-    global EquY
-    print(event4)
-    if event4 == "x=745":
-        EquX = "+="
-    EquY = "-="
+while event4 !== "1":
+    def configure_handler(event4):
+        global EquX
+        global EquY
+        print(event4)
+        if event4 == "x=745":
+            EquX = "+="
+        EquY = "-="
     
-    # root.after_idle(move22)
+        # root.after_idle(move22)
 
-root.bind("<Configure>", configure_handler)
+    root.bind("<Configure>", configure_handler)
 
 def move22():
     global xx

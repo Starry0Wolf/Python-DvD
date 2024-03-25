@@ -1,6 +1,6 @@
 import time
 import asyncio
-import operator
+import random
 from tkinter import *
 
 root = Tk()
@@ -9,92 +9,67 @@ root.configure(background="black")
 root.minsize(400, 240)
 # root.maxsize(400, 240)
 root.geometry("300x300+50+50")
-# a = 1
-# b = 2
-# def show_alert():
-#     print(f"3333 {root.geometry}")
-#     root.geometry(f'+{a}+{b}')
-
-# Tk.Button(root, text="Click Me", command=show_alert).pack()
-# Postion and size getter
-
-
-
-# Edges
-    # Top_Left is x=0 y=25
-    # Bottom_Left is x=0 y=833
-    # Bottom_Right is x=1648 y=833
-    # Top_right is x=1648 y=25
-
-# Sides
-    # Top is y=25
-    # Bottom is y=833
-    # Left is x=0
-    # Right is x=1648
 
 # Create Label in our window
-image = PhotoImage(file="PythonDvD/logo.png")
+image = PhotoImage(file="/Users/jamescady/Desktop/Coding_stuff/Window_Game/PythonDvD/logo.png")
 image2 = image.subsample(3,3)
 img = Label(root, image=image2)
 img.pack()
 
 
-# def OLD_STUFF(Yeah):
 
-    # ops = {
-    #         "+": operator.add,
-    #         "-": operator.sub,
-    # }   
-    # op_char = "+"
-    # op_func = ops[op_char]
-    # result = op_func()
+EquX = "less"
+EquY = "more"
 
-global xx
-global yy
-xx = 825
-yy = 436
 
-# To top left is both negtive
-# To bottom right is both postive
-# To top right is x postive and y negtive
-# To bottom left is y postive and x negtive
-EquX = "-="
-EquY = "+="
-global event4
-direction_changed = False
+def click():
+    print("X:", root.winfo_x(), "Y:", root.winfo_y(), "  EquX:", EquX, "EquY:", EquY)
+    xx = int(root.winfo_x())
+    yy = int(root.winfo_y())
 
-def configure_handler(event4):
-    global EquX
-    global EquY
-    print(event4)
-    if event4 == "x=745":
-        EquX = "+="
-    EquY = "-="
-    
-    # root.after_idle(move22)
-
-root.bind("<Configure>", configure_handler)
-
-def move22():
-    global xx
-    global yy
-    global EquX
-    global EquY
-    
-    if EquX == "-=":
+    if EquX == "less":
         xx -= 10
-    elif EquX == "+=":
+    elif EquX == "more":
         xx += 10
     
-    if EquY == "-=":
+    if EquY == "less":
         yy -= 10
-    elif EquY == "+=":
+    elif EquY == "more":
         yy += 10
 
     root.geometry(f'+{xx}+{yy}')
     root.update
 
+Button(text="Get position", command=click).pack()
 
-Button(root, text="Click Me", command=move22).pack()
-# asyncio.run(hello())
+def click2():
+    screen_width = root.winfo_screenwidth()
+    screen_height = root.winfo_screenheight()
+    print({screen_width}, {screen_height})
+    
+
+Button(text="Screen size", command=click2).pack()
+
+# To top left is both negtive
+# To bottom right is both postive
+# To top right is x postive and y negtive
+# To bottom left is y postive and x negtive
+
+
+
+def bounce():
+    if root.winfo_x() == 0:
+        print("\033[32mLEFT\033[0m")
+
+    if root.winfo_y() == 25:
+        print("\033[32mTOP\033[0m")
+
+    if root.winfo_x() == 1648:
+        print("\033[32mRIGHT\033[0m")
+
+    if root.winfo_y() == 772:
+        print("\033[32mBOTTOM\033[0m")
+
+Button(text="Bounce?", command=bounce).pack()
+
 root.mainloop()

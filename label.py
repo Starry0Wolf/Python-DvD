@@ -4,10 +4,10 @@ import random
 from tkinter import *
 
 root = Tk()
-root.title("DVD")
+root.title("Train")
 root.configure(background="black")
-root.minsize(400, 240)
-# root.maxsize(400, 240)
+root.minsize(400, 250)
+root.maxsize(400, 250)
 root.geometry("300x300+50+50")
 
 # Create Label in our window
@@ -16,10 +16,16 @@ image2 = image.subsample(3,3)
 img = Label(root, image=image2)
 img.pack()
 
-EquX = "less"
+EquX = "more"
 EquY = "more"
+speed = 5
+RepeatSpeed = 1 * 10
+# xRandom = random.randint(-1, 1)
+# yRandom = random.randint(-1, 1)
+xRandom = 1
+yRandom = 10
 
-
+# yRandom = 1
 
 
 def click():
@@ -30,26 +36,23 @@ def click():
     yy = int(root.winfo_y())
 
     if EquX == "less":
-        xx -= 10
+        xx -= speed
     elif EquX == "more":
-        xx += 10
+        xx += speed
     
     if EquY == "less":
-        yy -= 10
+        yy -= speed
     elif EquY == "more":
-        yy += 10
+        yy += speed
 
+    xx += xRandom
+    yy += yRandom
     root.geometry(f'+{xx}+{yy}')
     root.update
     bounce()
-    root.after(500, click)
+    root.after(RepeatSpeed, click)
 
-
-
-
-    
-
-Button(text="Get position", command=click).pack()
+# Button(text="Get position", command=click).pack()
 
 # To top left is both negtive
 # To bottom right is both postive
@@ -60,7 +63,7 @@ def bounce():
     global EquX
     global EquY
 
-    if root.winfo_x() <= 0:
+    if root.winfo_x() <= 50:
         print("\033[32mLEFT\033[0m")
         # Bottom left
         if EquX == "less" and EquY == "more":
@@ -72,7 +75,7 @@ def bounce():
             EquY = "less"
 
 
-    if root.winfo_y() <= 25:
+    if root.winfo_y() <= 75:
         print("\033[32mTOP\033[0m")
         # Top right
         if EquX == "more" and EquY == "less":
@@ -113,12 +116,8 @@ def bounce():
             EquX = "less"
             EquY = "less"
 
+# Button(text="Bounce?", command=bounce).pack()
 
-
-
-
-
-
-Button(text="Bounce?", command=bounce).pack()
+click()
 
 root.mainloop()

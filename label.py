@@ -4,28 +4,65 @@ import random
 from tkinter import *
 
 root = Tk()
-root.title("Train")
+root.title("DVD")
 root.configure(background="black")
-root.minsize(400, 250)
-root.maxsize(400, 250)
+root.minsize(400, 240)
+# root.maxsize(400, 240)
 root.geometry("300x300+50+50")
 
 # Create Label in our window
 image = PhotoImage(file="/Users/jamescady/Desktop/Coding_stuff/Window_Game/PythonDvD/logo.png")
-image2 = image.subsample(3,3)
-img = Label(root, image=image2)
+
+logo = image
+
+logo1 = PhotoImage(file="/Users/jamescady/Desktop/Coding_stuff/Window_Game/PythonDvD/Logos/dvdlogo-01.jpeg") 
+logo2 = PhotoImage(file="/Users/jamescady/Desktop/Coding_stuff/Window_Game/PythonDvD/Logos/dvdlogo-02.jpeg") 
+logo3 = PhotoImage(file="/Users/jamescady/Desktop/Coding_stuff/Window_Game/PythonDvD/Logos/dvdlogo-03.jpeg") 
+logo4 = PhotoImage(file="/Users/jamescady/Desktop/Coding_stuff/Window_Game/PythonDvD/Logos/dvdlogo-04.jpeg") 
+logo5 = PhotoImage(file="/Users/jamescady/Desktop/Coding_stuff/Window_Game/PythonDvD/Logos/dvdlogo-05.jpeg") 
+logo6 = PhotoImage(file="/Users/jamescady/Desktop/Coding_stuff/Window_Game/PythonDvD/Logos/dvdlogo-06.jpeg") 
+logo7 = PhotoImage(file="/Users/jamescady/Desktop/Coding_stuff/Window_Game/PythonDvD/Logos/dvdlogo-07.jpeg")
+
+
+logo_num = 0
+
+def switch():
+    global logo_num
+    global logo
+    logo_num += 1
+    if logo_num >= 8:
+        logo_num = 1
+
+
+    if logo_num == 1:
+        logo = logo1
+    elif logo_num == 2:
+        logo = logo2
+    elif logo_num == 3:
+        logo = logo3
+    elif logo_num == 4:
+        logo = logo4
+    elif logo_num == 5:
+        logo = logo5
+    elif logo_num == 6:
+        logo = logo6
+    elif logo_num == 7:
+        logo = logo7
+ 
+    print(logo_num)
+    
+
+
+
+image = image.subsample(3,3)
+img = Label(root, image=image)
 img.pack()
 
-EquX = "more"
-EquY = "more"
-speed = 5
-RepeatSpeed = 1 * 10
-# xRandom = random.randint(-1, 1)
-# yRandom = random.randint(-1, 1)
-xRandom = 1
-yRandom = 10
 
-# yRandom = 1
+EquX = "less"
+EquY = "more"
+
+
 
 
 def click():
@@ -36,23 +73,26 @@ def click():
     yy = int(root.winfo_y())
 
     if EquX == "less":
-        xx -= speed
+        xx -= 10
     elif EquX == "more":
-        xx += speed
+        xx += 10
     
     if EquY == "less":
-        yy -= speed
+        yy -= 10
     elif EquY == "more":
-        yy += speed
+        yy += 10
 
-    xx += xRandom
-    yy += yRandom
     root.geometry(f'+{xx}+{yy}')
     root.update
     bounce()
-    root.after(RepeatSpeed, click)
+    root.after(50, click)
 
-# Button(text="Get position", command=click).pack()
+
+
+
+    
+
+Button(text="Get position", command=click).pack()
 
 # To top left is both negtive
 # To bottom right is both postive
@@ -63,28 +103,32 @@ def bounce():
     global EquX
     global EquY
 
-    if root.winfo_x() <= 50:
+    if root.winfo_x() <= 0:
         print("\033[32mLEFT\033[0m")
         # Bottom left
         if EquX == "less" and EquY == "more":
             EquX = "more"
             EquY = "more"
+            switch()
         # Top left
         elif EquX == "less" and EquY == "less":
             EquX = "more"
             EquY = "less"
+            switch()
 
 
-    if root.winfo_y() <= 75:
+    if root.winfo_y() <= 25:
         print("\033[32mTOP\033[0m")
         # Top right
         if EquX == "more" and EquY == "less":
             EquX = "less"
             EquY = "less"
+            switch()
         # Top left
         elif EquX == "less" and EquY == "less":
             EquX = "less"
             EquY = "more"
+            switch()
         
 
 # To top left is both negtive
@@ -99,10 +143,12 @@ def bounce():
         if EquX == "more" and EquY == "less":
             EquX = "less"
             EquY = "less"
+            switch()
         # Bottom right
         elif EquX == "more" and EquY == "more":
             EquX = "less"
             EquY = "more"
+            switch()
 
 
     if root.winfo_y() >= 792:
@@ -111,13 +157,20 @@ def bounce():
         if EquX == "more" and EquY == "more":
             EquX = "more"
             EquY = "less"
+            switch()
         # Bottom left
         elif EquX == "less" and EquY == "more":
             EquX = "less"
             EquY = "less"
+            switch()
+
+
+
+
+
+
 
 # Button(text="Bounce?", command=bounce).pack()
-
-click()
+Button(text="switch", command=switch).pack()
 
 root.mainloop()

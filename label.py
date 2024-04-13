@@ -120,7 +120,7 @@ def bounce():
     global EquX
     global EquY
 
-    if root.winfo_x() <= leftScreen:
+    if root.winfo_x() <= 0:
         print("\033[32mLEFT\033[0m")
         # Bottom left
         if EquX == "less" and EquY == "more":
@@ -133,8 +133,8 @@ def bounce():
             EquY = "less"
             # switch()
 
-    #
-    if root.winfo_y() <= topScreen:
+
+    if root.winfo_y() <= 25:
         print("\033[32mTOP\033[0m")
         # Top right
         if EquX == "more" and EquY == "less":
@@ -153,13 +153,13 @@ def bounce():
 # To top right is x postive and y negtive
 # To bottom left is x negtive and y postive
 
-    # TOP
-    if root.winfo_x() >= rightScreen:
+
+    if root.winfo_x() >= 1648:
         print("\033[32mRIGHT\033[0m")
         # Top right
         if EquX == "more" and EquY == "less":
-            EquX = "more"
-            EquY = "more"
+            EquX = "less"
+            EquY = "less"
             # switch()
         # Bottom right
         elif EquX == "more" and EquY == "more":
@@ -167,8 +167,8 @@ def bounce():
             EquY = "more"
             # switch()
 
-    # BOTTOM
-    if root.winfo_y() >= bottomScreen:
+
+    if root.winfo_y() >= 792:
         print("\033[32mBOTTOM\033[0m")
         # Bottom right
         if EquX == "more" and EquY == "more":
@@ -190,4 +190,4 @@ click()
 # Button(text="Bounce?", command=bounce).pack()
 # Button(text="switch", command=switch).pack()
 
-root.mainloop()
+root.mainloop

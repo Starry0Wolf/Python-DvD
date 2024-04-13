@@ -7,51 +7,68 @@ root = Tk()
 root.title("DVD")
 root.configure(background="black")
 root.minsize(400, 240)
-# root.maxsize(400, 240)
+root.maxsize(400, 240)
 root.geometry("300x300+50+50")
 
 # Create Label in our window
 image = PhotoImage(file="/Users/jamescady/Desktop/Coding_stuff/Window_Game/PythonDvD/logo.png")
 
-logo = image
 
-logo1 = PhotoImage(file="/Users/jamescady/Desktop/Coding_stuff/Window_Game/PythonDvD/Logos/dvdlogo-01.jpeg") 
-logo2 = PhotoImage(file="/Users/jamescady/Desktop/Coding_stuff/Window_Game/PythonDvD/Logos/dvdlogo-02.jpeg") 
-logo3 = PhotoImage(file="/Users/jamescady/Desktop/Coding_stuff/Window_Game/PythonDvD/Logos/dvdlogo-03.jpeg") 
-logo4 = PhotoImage(file="/Users/jamescady/Desktop/Coding_stuff/Window_Game/PythonDvD/Logos/dvdlogo-04.jpeg") 
-logo5 = PhotoImage(file="/Users/jamescady/Desktop/Coding_stuff/Window_Game/PythonDvD/Logos/dvdlogo-05.jpeg") 
-logo6 = PhotoImage(file="/Users/jamescady/Desktop/Coding_stuff/Window_Game/PythonDvD/Logos/dvdlogo-06.jpeg") 
-logo7 = PhotoImage(file="/Users/jamescady/Desktop/Coding_stuff/Window_Game/PythonDvD/Logos/dvdlogo-07.jpeg")
-
-
-logo_num = 0
-
-def switch():
-    global logo_num
-    global logo
-    logo_num += 1
-    if logo_num >= 8:
-        logo_num = 1
+# logo1 = PhotoImage(file="/Users/jamescady/Desktop/Coding_stuff/Window_Game/PythonDvD/Logos1/dvdlogo-01.png").subsample(3,3)
+# logo2 = PhotoImage(file="/Users/jamescady/Desktop/Coding_stuff/Window_Game/PythonDvD/Logos1/dvdlogo-02.png").subsample(3,3)
+# logo3 = PhotoImage(file="/Users/jamescady/Desktop/Coding_stuff/Window_Game/PythonDvD/Logos1/dvdlogo-03.png").subsample(3,3)
+# logo4 = PhotoImage(file="/Users/jamescady/Desktop/Coding_stuff/Window_Game/PythonDvD/Logos1/dvdlogo-04.png").subsample(3,3)
+# logo5 = PhotoImage(file="/Users/jamescady/Desktop/Coding_stuff/Window_Game/PythonDvD/Logos1/dvdlogo-05.png").subsample(3,3)
+# logo6 = PhotoImage(file="/Users/jamescady/Desktop/Coding_stuff/Window_Game/PythonDvD/Logos1/dvdlogo-06.png").subsample(3,3)
+# logo7 = PhotoImage(file="/Users/jamescady/Desktop/Coding_stuff/Window_Game/PythonDvD/Logos1/dvdlogo-07.png").subsample(3,3)
 
 
-    if logo_num == 1:
-        logo = logo1
-    elif logo_num == 2:
-        logo = logo2
-    elif logo_num == 3:
-        logo = logo3
-    elif logo_num == 4:
-        logo = logo4
-    elif logo_num == 5:
-        logo = logo5
-    elif logo_num == 6:
-        logo = logo6
-    elif logo_num == 7:
-        logo = logo7
+# logo_num = 0
+
+# def switch():
+    # global logo_num
+    # global logo
+    # global logo1
+    # global logo2
+    # global logo3
+    # global logo4
+    # global logo5
+    # global logo6
+    # global logo7
+    # # global image
+    # logo_num += 1
+    # if logo_num >= 8:
+    #     logo_num = 1
+
+
+    # if logo_num == 1:
+    #     logo = logo1
+    # elif logo_num == 2:
+    #     logo = logo2
+    # elif logo_num == 3:
+    #     logo = logo3
+    # elif logo_num == 4:
+    #     logo = logo4
+    # elif logo_num == 5:
+    #     logo = logo5
+    # elif logo_num == 6:
+    #     logo = logo6
+    # elif logo_num == 7:
+    #     logo = logo7
  
-    print(logo_num)
+
+
     
 
+#     print(logo_num)
+#     logo = image
+#     # image = image.subsample(3,3)
+#     img = Label(root, image=image)
+#     img.pack()
+
+
+
+# switch()
 
 
 image = image.subsample(3,3)
@@ -92,7 +109,7 @@ def click():
 
     
 
-Button(text="Get position", command=click).pack()
+# Button(text="Get position", command=click).pack()
 
 # To top left is both negtive
 # To bottom right is both postive
@@ -109,12 +126,12 @@ def bounce():
         if EquX == "less" and EquY == "more":
             EquX = "more"
             EquY = "more"
-            switch()
+            # switch()
         # Top left
         elif EquX == "less" and EquY == "less":
             EquX = "more"
             EquY = "less"
-            switch()
+            # switch()
 
 
     if root.winfo_y() <= 25:
@@ -123,12 +140,12 @@ def bounce():
         if EquX == "more" and EquY == "less":
             EquX = "less"
             EquY = "less"
-            switch()
+            # switch()
         # Top left
         elif EquX == "less" and EquY == "less":
             EquX = "less"
             EquY = "more"
-            switch()
+            # switch()
         
 
 # To top left is both negtive
@@ -143,12 +160,12 @@ def bounce():
         if EquX == "more" and EquY == "less":
             EquX = "less"
             EquY = "less"
-            switch()
+            # switch()
         # Bottom right
         elif EquX == "more" and EquY == "more":
             EquX = "less"
             EquY = "more"
-            switch()
+            # switch()
 
 
     if root.winfo_y() >= 792:
@@ -157,20 +174,20 @@ def bounce():
         if EquX == "more" and EquY == "more":
             EquX = "more"
             EquY = "less"
-            switch()
+            # switch()
         # Bottom left
         elif EquX == "less" and EquY == "more":
             EquX = "less"
             EquY = "less"
-            switch()
+            # switch()
 
 
 
 
-
+click()
 
 
 # Button(text="Bounce?", command=bounce).pack()
-Button(text="switch", command=switch).pack()
+# Button(text="switch", command=switch).pack()
 
 root.mainloop()

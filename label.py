@@ -2,6 +2,7 @@ import time
 import asyncio
 import random
 from tkinter import *
+from PIL import ImageTk, Image
 
 root = Tk()
 root.title("DVD")
@@ -11,69 +12,34 @@ root.maxsize(400, 240)
 root.geometry("300x300+50+50")
 
 # Create Label in our window
-image = PhotoImage(file="/Users/jamescady/Desktop/Coding_stuff/Window_Game/PythonDvD/logo.png")
+# image = PhotoImage(file="/Users/jamescady/Desktop/Coding_stuff/Window_Game/PythonDvD/logo.png")
 
+panel = Label(root)
+panel.pack()
 
-# logo1 = PhotoImage(file="/Users/jamescady/Desktop/Coding_stuff/Window_Game/PythonDvD/Logos1/dvdlogo-01.png").subsample(3,3)
-# logo2 = PhotoImage(file="/Users/jamescady/Desktop/Coding_stuff/Window_Game/PythonDvD/Logos1/dvdlogo-02.png").subsample(3,3)
-# logo3 = PhotoImage(file="/Users/jamescady/Desktop/Coding_stuff/Window_Game/PythonDvD/Logos1/dvdlogo-03.png").subsample(3,3)
-# logo4 = PhotoImage(file="/Users/jamescady/Desktop/Coding_stuff/Window_Game/PythonDvD/Logos1/dvdlogo-04.png").subsample(3,3)
-# logo5 = PhotoImage(file="/Users/jamescady/Desktop/Coding_stuff/Window_Game/PythonDvD/Logos1/dvdlogo-05.png").subsample(3,3)
-# logo6 = PhotoImage(file="/Users/jamescady/Desktop/Coding_stuff/Window_Game/PythonDvD/Logos1/dvdlogo-06.png").subsample(3,3)
-# logo7 = PhotoImage(file="/Users/jamescady/Desktop/Coding_stuff/Window_Game/PythonDvD/Logos1/dvdlogo-07.png").subsample(3,3)
+images = ['dvdlogo-01.jpeg', 'dvdlogo-02.jpeg', 'dvdlogo-03.jpeg', 'dvdlogo-04.jpeg', 'dvdlogo-05.jpeg', 'dvdlogo-06.jpeg', 'dvdlogo-07.jpeg']
+images = iter(images)  # make an iterator
 
+def next_img():
+    try:
+        img = next(images)  # get the next image from the iterator
+    except StopIteration:
+        return  # if there are no more images, do nothing
 
-# logo_num = 0
-
-# def switch():
-    # global logo_num
-    # global logo
-    # global logo1
-    # global logo2
-    # global logo3
-    # global logo4
-    # global logo5
-    # global logo6
-    # global logo7
-    # # global image
-    # logo_num += 1
-    # if logo_num >= 8:
-    #     logo_num = 1
-
-
-    # if logo_num == 1:
-    #     logo = logo1
-    # elif logo_num == 2:
-    #     logo = logo2
-    # elif logo_num == 3:
-    #     logo = logo3
-    # elif logo_num == 4:
-    #     logo = logo4
-    # elif logo_num == 5:
-    #     logo = logo5
-    # elif logo_num == 6:
-    #     logo = logo6
-    # elif logo_num == 7:
-    #     logo = logo7
- 
-
-
-    
-
-#     print(logo_num)
-#     logo = image
-#     # image = image.subsample(3,3)
-#     img = Label(root, image=image)
-#     img.pack()
+    # load the image and display it
+    img = Image.open(img)
+    img = ImageTk.PhotoImage(img)
+    panel.img = img  # keep a reference so it's not garbage collected
+    panel['image'] = img
 
 
 
 # switch()
 
 
-image = image.subsample(3,3)
-img = Label(root, image=image)
-img.pack()
+# image = image.subsample(3,3)
+# img = Label(root, image=image)
+# img.pack()
 
 
 EquX = "less"
@@ -146,6 +112,8 @@ def bounce():
             EquX = "less"
             EquY = "more"
             # switch()
+
+    # next()
         
 
 # To top left is both negtive
@@ -181,6 +149,8 @@ def bounce():
             EquY = "less"
             # switch()
 
+    next_img()
+
 
 
 
@@ -189,5 +159,7 @@ click()
 
 # Button(text="Bounce?", command=bounce).pack()
 # Button(text="switch", command=switch).pack()
+
+next_img()
 
 root.mainloop()

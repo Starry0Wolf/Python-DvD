@@ -15,13 +15,13 @@ image = PhotoImage(file="/Users/jamescady/Desktop/Coding_stuff/Window_Game/Pytho
 
 logo = image
 
-logo1 = PhotoImage(file="/Users/jamescady/Desktop/Coding_stuff/Window_Game/PythonDvD/Logos/dvdlogo-01.jpeg") 
-logo2 = PhotoImage(file="/Users/jamescady/Desktop/Coding_stuff/Window_Game/PythonDvD/Logos/dvdlogo-02.jpeg") 
-logo3 = PhotoImage(file="/Users/jamescady/Desktop/Coding_stuff/Window_Game/PythonDvD/Logos/dvdlogo-03.jpeg") 
-logo4 = PhotoImage(file="/Users/jamescady/Desktop/Coding_stuff/Window_Game/PythonDvD/Logos/dvdlogo-04.jpeg") 
-logo5 = PhotoImage(file="/Users/jamescady/Desktop/Coding_stuff/Window_Game/PythonDvD/Logos/dvdlogo-05.jpeg") 
-logo6 = PhotoImage(file="/Users/jamescady/Desktop/Coding_stuff/Window_Game/PythonDvD/Logos/dvdlogo-06.jpeg") 
-logo7 = PhotoImage(file="/Users/jamescady/Desktop/Coding_stuff/Window_Game/PythonDvD/Logos/dvdlogo-07.jpeg")
+logo1 = PhotoImage(file="/Users/jamescady/Desktop/Coding_stuff/Window_Game/PythonDvD/stfuf/download-1.png") 
+logo2 = PhotoImage(file="/Users/jamescady/Desktop/Coding_stuff/Window_Game/PythonDvD/stfuf/download-2.png") 
+logo3 = PhotoImage(file="/Users/jamescady/Desktop/Coding_stuff/Window_Game/PythonDvD/stfuf/download-3.png") 
+logo4 = PhotoImage(file="/Users/jamescady/Desktop/Coding_stuff/Window_Game/PythonDvD/stfuf/download-4.png") 
+logo5 = PhotoImage(file="/Users/jamescady/Desktop/Coding_stuff/Window_Game/PythonDvD/stfuf/download-5.png") 
+logo6 = PhotoImage(file="/Users/jamescady/Desktop/Coding_stuff/Window_Game/PythonDvD/stfuf/download-6.png") 
+logo7 = PhotoImage(file="/Users/jamescady/Desktop/Coding_stuff/Window_Game/PythonDvD/stfuf/download-7.png")
 
 
 logo_num = 0
@@ -85,7 +85,7 @@ def click():
     root.geometry(f'+{xx}+{yy}')
     root.update
     bounce()
-    root.after(50, click)
+    root.after(0.1, click)
 
 
 

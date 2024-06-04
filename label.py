@@ -3,6 +3,7 @@ import asyncio
 import random
 from tkinter import *
 from PIL import ImageTk, Image
+import itertools
 
 root = Tk()
 root.title("DVD")
@@ -22,10 +23,14 @@ folderr22="/Users/jamescady/Desktop/Coding_stuff/Window_Game/PythonDVD/Version2/
 # , 'dvdlogo-02.jpeg', 'dvdlogo-03.jpeg', 'dvdlogo-04.jpeg', 'dvdlogo-05.jpeg', 'dvdlogo-06.jpeg', 'dvdlogo-07.jpeg'
 images = [folderr22 + "1.png", folderr22 + "2.png", folderr22 + "3.png", folderr22 + "4.png", folderr22 + "5.png", folderr22 + "6.png", folderr22 + "7.png"]
 images = iter(images)  # make an iterator
+images = itertools.cycle(images)
 
-def next_img():
+def next_img(timeNOW):
     try:
         img = next(images)  # get the next image from the iterator
+        root.after(timeNOW, next_img)
+        timeNOW = 100
+        
     except StopIteration:
         return  # if there are no more images, do nothing
 
@@ -99,12 +104,12 @@ def bounce():
         if EquX == "less" and EquY == "more":
             EquX = "more"
             EquY = "more"
-            next_img()
+            next_img(0)
         # Top left
         elif EquX == "less" and EquY == "less":
             EquX = "more"
             EquY = "less"
-            next_img()
+            next_img(0)
 
 
     if root.winfo_y() <= 25:
@@ -113,12 +118,12 @@ def bounce():
         if EquX == "more" and EquY == "less":
             EquX = "less"
             EquY = "less"
-            next_img()
+            next_img(0)
         # Top left
         elif EquX == "less" and EquY == "less":
             EquX = "less"
             EquY = "more"
-            next_img()
+            next_img(0)
 
     # next()
         
@@ -135,12 +140,12 @@ def bounce():
         if EquX == "more" and EquY == "less":
             EquX = "less"
             EquY = "less"
-            next_img()
+            next_img(0)
         # Bottom right
         elif EquX == "more" and EquY == "more":
             EquX = "less"
             EquY = "more"
-            next_img()
+            next_img(0)
 
 
     if root.winfo_y() >= 792:
@@ -149,12 +154,12 @@ def bounce():
         if EquX == "more" and EquY == "more":
             EquX = "more"
             EquY = "less"
-            next_img()
+            next_img(0)
         # Bottom left
         elif EquX == "less" and EquY == "more":
             EquX = "less"
             EquY = "less"
-            next_img()
+            next_img(0)
 
 
 
@@ -167,6 +172,6 @@ click()
 # Button(text="Bounce?", command=bounce).pack()
 # Button(text="switch", command=switch).pack()
 
-next_img()
+next_img(0)
 
 root.mainloop()

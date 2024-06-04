@@ -12,12 +12,15 @@ root.maxsize(400, 240)
 root.geometry("300x300+50+50")
 
 # Create Label in our window
-# image = PhotoImage(file="/Users/jamescady/Desktop/Coding_stuff/Window_Game/PythonDvD/logo.png")
+# image = PhotoImage(file="/Users/jamescady/Desktop/Coding_stuff/Window_Game/PythonDVD/logo.png")
 
 panel = Label(root)
 panel.pack()
+folderr22="/Users/jamescady/Desktop/Coding_stuff/Window_Game/PythonDVD/Version2/new/Cloudconvert/download-"
 
-images = ['dvdlogo-01.jpeg', 'dvdlogo-02.jpeg', 'dvdlogo-03.jpeg', 'dvdlogo-04.jpeg', 'dvdlogo-05.jpeg', 'dvdlogo-06.jpeg', 'dvdlogo-07.jpeg']
+# file="/Users/jamescady/Desktop/Coding_stuff/Window_Game/Version2/Cloudconvert
+# , 'dvdlogo-02.jpeg', 'dvdlogo-03.jpeg', 'dvdlogo-04.jpeg', 'dvdlogo-05.jpeg', 'dvdlogo-06.jpeg', 'dvdlogo-07.jpeg'
+images = [folderr22 + "1.png", folderr22 + "2.png", folderr22 + "3.png", folderr22 + "4.png", folderr22 + "5.png", folderr22 + "6.png", folderr22 + "7.png"]
 images = iter(images)  # make an iterator
 
 def next_img():
@@ -27,6 +30,7 @@ def next_img():
         return  # if there are no more images, do nothing
 
     # load the image and display it
+    
     img = Image.open(img)
     img = ImageTk.PhotoImage(img)
     panel.img = img  # keep a reference so it's not garbage collected
@@ -34,7 +38,10 @@ def next_img():
 
 
 
-# switch()
+# screen_width = root.winfo_screenwidth()
+# screen_height = root.winfo_screenheight()
+# print(screen_height, screen_width)
+    
 
 
 # image = image.subsample(3,3)
@@ -92,12 +99,12 @@ def bounce():
         if EquX == "less" and EquY == "more":
             EquX = "more"
             EquY = "more"
-            # switch()
+            next_img()
         # Top left
         elif EquX == "less" and EquY == "less":
             EquX = "more"
             EquY = "less"
-            # switch()
+            next_img()
 
 
     if root.winfo_y() <= 25:
@@ -106,12 +113,12 @@ def bounce():
         if EquX == "more" and EquY == "less":
             EquX = "less"
             EquY = "less"
-            # switch()
+            next_img()
         # Top left
         elif EquX == "less" and EquY == "less":
             EquX = "less"
             EquY = "more"
-            # switch()
+            next_img()
 
     # next()
         
@@ -128,12 +135,12 @@ def bounce():
         if EquX == "more" and EquY == "less":
             EquX = "less"
             EquY = "less"
-            # switch()
+            next_img()
         # Bottom right
         elif EquX == "more" and EquY == "more":
             EquX = "less"
             EquY = "more"
-            # switch()
+            next_img()
 
 
     if root.winfo_y() >= 792:
@@ -142,14 +149,14 @@ def bounce():
         if EquX == "more" and EquY == "more":
             EquX = "more"
             EquY = "less"
-            # switch()
+            next_img()
         # Bottom left
         elif EquX == "less" and EquY == "more":
             EquX = "less"
             EquY = "less"
-            # switch()
+            next_img()
 
-    next_img()
+
 
 
 

@@ -86,7 +86,7 @@ def bounce():
     global EquX
     global EquY
 
-    if root.winfo_x() <= 0:
+    if root.winfo_x() <= leftScreen:
         print("\033[32mLEFT\033[0m")
         # Bottom left
         if EquX == "less" and EquY == "more":
@@ -99,8 +99,8 @@ def bounce():
             EquY = "less"
             # switch()
 
-
-    if root.winfo_y() <= 25:
+    #
+    if root.winfo_y() <= topScreen:
         print("\033[32mTOP\033[0m")
         # Top right
         if EquX == "more" and EquY == "less":
@@ -121,13 +121,13 @@ def bounce():
 # To top right is x postive and y negtive
 # To bottom left is x negtive and y postive
 
-
-    if root.winfo_x() >= 1648:
+    # TOP
+    if root.winfo_x() >= rightScreen:
         print("\033[32mRIGHT\033[0m")
         # Top right
         if EquX == "more" and EquY == "less":
-            EquX = "less"
-            EquY = "less"
+            EquX = "more"
+            EquY = "more"
             # switch()
         # Bottom right
         elif EquX == "more" and EquY == "more":
@@ -135,8 +135,8 @@ def bounce():
             EquY = "more"
             # switch()
 
-
-    if root.winfo_y() >= 792:
+    # BOTTOM
+    if root.winfo_y() >= bottomScreen:
         print("\033[32mBOTTOM\033[0m")
         # Bottom right
         if EquX == "more" and EquY == "more":
